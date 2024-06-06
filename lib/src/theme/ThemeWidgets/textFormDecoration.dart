@@ -10,7 +10,7 @@ class TTextFormDFieldTheme {
   TTextFormDFieldTheme._();
 
   static final OutlineInputBorder _commonBorder = OutlineInputBorder(
-    borderRadius: TBorderRadiusStyle.roundedBorder8,
+    borderRadius: TBorderRadiusStyle.roundedBorder11,
     borderSide: BorderSide(color: TColors.green800),
   );
 

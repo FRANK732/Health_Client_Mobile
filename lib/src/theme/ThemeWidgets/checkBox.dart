@@ -7,7 +7,7 @@ class TCheckBoxTheme {
 
   static CheckboxThemeData lightCheckBoxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(
-        borderRadius: TBorderRadiusStyle.roundedBorder10),
+        borderRadius: TBorderRadiusStyle.roundedBorder11),
     checkColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {
@@ -30,7 +30,7 @@ class TCheckBoxTheme {
 
   static CheckboxThemeData darkCheckBoxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(
-        borderRadius: TBorderRadiusStyle.roundedBorder10),
+        borderRadius: TBorderRadiusStyle.roundedBorder11),
     checkColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {

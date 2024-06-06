@@ -19,7 +19,7 @@ class TElevatedTheme {
       ),
       // textStyle: CustomTextStyles.bodySmallBlack900,
       shape: RoundedRectangleBorder(
-          borderRadius: TBorderRadiusStyle.roundedBorder8),
+          borderRadius: TBorderRadiusStyle.circleBorder25),
     ),
   );
 
@@ -35,7 +35,7 @@ class TElevatedTheme {
       ),
       // textStyle: CustomTextStyles.bodySmallBlack900,
       shape: RoundedRectangleBorder(
-          borderRadius: TBorderRadiusStyle.roundedBorder8),
+          borderRadius: TBorderRadiusStyle.circleBorder25),
     ),
   );
 }

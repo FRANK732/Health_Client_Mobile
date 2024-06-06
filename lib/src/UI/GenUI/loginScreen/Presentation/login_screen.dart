@@ -66,7 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: TSizes.imageHeight,
                   fit: BoxFit.cover,
                 ),
-                SizedBox(height: TSizes.md.h),
+                SizedBox(
+                  height: TSizes.md.h,
+                  width: TSizes.md.w,
+                ),
                 Text("Enter your login Detatils"),
                 SizedBox(height: TSizes.md.h),
                 _buildLoginForm(context),
@@ -82,49 +85,51 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildLoginForm(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        children: [
-          CustomTextField(
-            controller: _username,
-            readonly: false,
-            obscureText: false,
-            labelText: "Username/Phone",
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your username';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: TSizes.md.h),
-          CustomTextField(
-            suffixIcon: IconButton(
-                onPressed: _togglePasswordVisibility,
-                iconSize: TSizes.iconXSmall,
-                icon: _icon),
-            controller: _password,
-            readonly: false,
-            obscureText: true,
-            labelText: "Password",
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: TSizes.ms.h),
-          CustomTextButton(
-            text: "Reset Password",
-            onPressed: () {},
-            alignment: Alignment.centerRight,
-          ), //TODOD Password Reset
+      child: Expanded(
+        child: Column(
+          children: [
+            CustomTextField(
+              controller: _username,
+              readonly: false,
+              obscureText: false,
+              labelText: "Username/Phone",
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your username';
+                }
+                return null;
+              },
+            ),
+            SizedBox(height: TSizes.md.h),
+            CustomTextField(
+              suffixIcon: IconButton(
+                  onPressed: _togglePasswordVisibility,
+                  iconSize: TSizes.iconXSmall,
+                  icon: _icon),
+              controller: _password,
+              readonly: false,
+              obscureText: true,
+              labelText: "Password",
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your password';
+                }
+                return null;
+              },
+            ),
+            SizedBox(height: TSizes.ms.h),
+            CustomTextButton(
+              text: "Reset Password",
+              onPressed: () {},
+              alignment: Alignment.centerRight,
+            ), //TODOD Password Reset
 
-          SizedBox(height: TSizes.ms.h),
-          CustomElevatedButton(text: "Login", onPressed: _login),
-          SizedBox(height: TSizes.md.h),
-          _footer(context),
-        ],
+            SizedBox(height: TSizes.ms.h),
+            CustomElevatedButton(text: "login", onPressed: _login),
+            SizedBox(height: TSizes.md.h),
+            _footer(context),
+          ],
+        ),
       ),
     );
   }

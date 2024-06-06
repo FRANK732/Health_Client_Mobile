@@ -31,9 +31,9 @@ class CustomTextField extends StatelessWidget {
   final double? width;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height ?? TSizes.bH,
-      width: width ?? TSizes.bW,
+      width: width ?? double.infinity,
       child: TextFormField(
         readOnly: readonly,
         autofocus: false,

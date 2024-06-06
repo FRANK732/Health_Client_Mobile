@@ -1,13 +1,18 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:health_moble_client/core/constant/TImages.dart';
 import 'package:health_moble_client/core/constant/TSizes.dart';
+import 'package:health_moble_client/src/widget/custom_Image_View.dart';
+import 'package:health_moble_client/src/widget/custom_circle_back.dart';
 import 'package:health_moble_client/src/widget/custom_dropdown.dart';
 import 'package:health_moble_client/src/widget/custom_elevated_button.dart';
 import 'package:health_moble_client/src/widget/custom_textButton.dart';
 import 'package:health_moble_client/src/widget/custom_text_field.dart';
+import 'package:health_moble_client/src/widget/label_checkBox.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -52,19 +57,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(TSizes.md.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("Register"),
-                _buildLoginForm(context),
-                SizedBox(height: TSizes.md.h),
-                CustomElevatedButton(text: "Register", onPressed: _login),
-                SizedBox(height: TSizes.md.h),
-                _footer(context)
-              ],
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(TSizes.md.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Align(alignment: Alignment.topLeft, child: CircleBack()),
+                  SizedBox(width: TSizes.md.w),
+                  // Center(
+                  //   child: CustomImageView(
+                  //     height: TSizes.bH + 70,
+                  //     imagePath: TImages.registImg,
+                  //   ),
+                  // ),
+                  Text(
+                    "Register",
+                    style: TextStyle(fontSize: TSizes.lg.sp),
+                  ),
+                  SizedBox(height: TSizes.md.h),
+                  _buildLoginForm(context),
+                ],
+              ),
             ),
           ),
         ),
@@ -80,9 +95,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Form(
       key: _formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: CustomTextField(
@@ -129,14 +146,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           _gender.text = value ?? '';
                         });
                       })),
-              SizedBox(width: TSizes.ms.w),
+              SizedBox(width: TSizes.md.w),
               Expanded(
                 child: CustomTextField(
-                  width: TSizes.bsW,
                   controller: _lastname,
                   readonly: false,
                   obscureText: true,
                   labelText: "DOB",
+                  keyboardType: TextInputType.datetime,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your dob';
@@ -147,10 +164,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ],
           ),
-          SizedBox(width: TSizes.ms.w),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              LabelCheckBox(
+                label: "User",
+              ),
+              LabelCheckBox(
+                label: "Doctor",
+              ),
+            ],
+          ),
+          SizedBox(height: TSizes.ms.h),
           CustomTextField(
             controller: _email,
             readonly: false,
+            keyboardType: TextInputType.emailAddress,
             obscureText: false,
             labelText: "Email",
             validator: (value) {
@@ -160,12 +189,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               return null;
             },
           ),
-          SizedBox(width: TSizes.ms.w),
+          SizedBox(height: TSizes.ms.h),
           CustomTextField(
-            width: TSizes.bsW.w,
             controller: _phone,
             readonly: false,
             obscureText: false,
+            keyboardType: TextInputType.phone,
             labelText: "Phone",
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -174,12 +203,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               return null;
             },
           ),
-          SizedBox(width: TSizes.ms.w),
+          SizedBox(height: TSizes.ms.h),
           CustomTextField(
-            width: TSizes.bsW.w,
             controller: _password,
             readonly: false,
-            obscureText: false,
+            obscureText: true,
             labelText: "Password",
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -188,9 +216,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               return null;
             },
           ),
-          SizedBox(width: TSizes.ms.w),
+          SizedBox(height: TSizes.ms.h),
           CustomTextField(
-            width: TSizes.bsW.w,
             controller: _confirmpass,
             readonly: false,
             obscureText: false,
@@ -202,40 +229,42 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               return null;
             },
           ),
+          SizedBox(height: TSizes.md.h),
+          CustomElevatedButton(text: "Register", onPressed: _login),
+          SizedBox(height: TSizes.md.h),
+          _footer(context)
         ],
       ),
     );
   }
 
   Widget _footer(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Emergency?",
-              ),
-              CustomTextButton(text: "Contact", onPressed: () {})
-            ],
-          ),
-          SizedBox(height: TSizes.ms.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Don't have an account?",
-              ),
-              CustomTextButton(
-                  text: "Login",
-                  onPressed: () {
-                    Get.toNamed("/login_screen");
-                  })
-            ],
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Emergency?",
+            ),
+            CustomTextButton(text: "Contact", onPressed: () {})
+          ],
+        ),
+        SizedBox(height: TSizes.ms.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Don't have an account?",
+            ),
+            CustomTextButton(
+                text: "Login",
+                onPressed: () {
+                  Get.offNamed("/login_screen");
+                })
+          ],
+        )
+      ],
     );
   }
 }
