@@ -6,8 +6,8 @@ class TBorderRadiusStyle {
   static BorderRadius get circleBorder50 => BorderRadius.circular(
         50.h,
       );
-  static BorderRadius get circleBorder1 => BorderRadius.circular(
-        1.h,
+  static BorderRadius get circleBorder25 => BorderRadius.circular(
+        25.h,
       );
   static BorderRadius get circleBorder20 => BorderRadius.circular(
         20.h,
@@ -19,23 +19,11 @@ class TBorderRadiusStyle {
       );
 
   // Rounded borders
-  static BorderRadius get roundedBorder10 => BorderRadius.circular(
-        10.h,
+  static BorderRadius get roundedBorder11 => BorderRadius.circular(
+        11.h,
       );
-  static BorderRadius get roundedBorder17 => BorderRadius.circular(
-        17.h,
-      );
-  static BorderRadius get roundedBorder2 => BorderRadius.circular(
-        2.h,
-      );
-  static BorderRadius get roundedBorder5 => BorderRadius.circular(
-        5.h,
-      );
-  static BorderRadius get roundedBorder8 => BorderRadius.circular(
-        8.h,
-      );
-  static BorderRadius get roundedBorder55 => BorderRadius.circular(
-        55.h,
+  static BorderRadius get roundedBorder100 => BorderRadius.circular(
+        100.h,
       );
 
   static BorderRadius get customBorderLR100 => BorderRadius.horizontal(
