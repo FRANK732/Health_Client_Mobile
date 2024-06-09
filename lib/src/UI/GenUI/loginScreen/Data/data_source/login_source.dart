@@ -13,14 +13,16 @@ class LoginSource extends ILoginSource {
     try {
       const String apiUrl = '$HealthBaseUrl/api/Authheath/Login';
       final Map<String, dynamic> requestBody = {
-        'username': email.trim(),
-        'password': password,
-        'status': 'storeKeeper'
+        'email': email.trim(),
+        'password': password
       };
 
       final http.Response response = await http.post(
         Uri.parse(apiUrl),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Thunder Client (https://www.thunderclient.com)'
+        },
         body: jsonEncode(requestBody),
       );
 

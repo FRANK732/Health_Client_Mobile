@@ -59,28 +59,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(TSizes.md.w),
-            child: Column(
-              children: [
-                Align(alignment: Alignment.topLeft, child: CircleBack()),
-                SizedBox(width: TSizes.md.w),
-                Center(
-                  child: Text(
-                    "Register",
-                    style: TextStyle(fontSize: TSizes.lg.sp),
-                  ),
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(TSizes.md.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: TSizes.md.h),
+                    Center(
+                      child: Text(
+                        "Register",
+                        style: TextStyle(fontSize: TSizes.lg.sp),
+                      ),
+                    ),
+                    Form(
+                      key: _formKey,
+                      child: _buildLoginForm(context),
+                    ),
+                    SizedBox(height: TSizes.md.h),
+                    _footer(context),
+                  ],
                 ),
-                Form(
-                  key: _formKey,
-                  child: _buildLoginForm(context),
-                ),
-                SizedBox(height: TSizes.md.h),
-                _footer(context),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+              top: 0,
+              left: TSizes.md.w,
+              child: CircleBack(),
+            ),
+          ],
         ),
         bottomNavigationBar: CustomElevatedButton(
             text: "Register",
@@ -150,9 +158,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(width: TSizes.md.w),
             Expanded(
               child: CustomTextField(
-                controller: _lastname,
+                controller: _dob,
                 readonly: false,
-                obscureText: true,
+                obscureText: false,
                 labelText: "DOB",
                 keyboardType: TextInputType.datetime,
                 validator: (value) {
@@ -263,7 +271,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Don't have an account?",
+              "Already have an account?",
             ),
             CustomTextButton(
                 text: "Login",
