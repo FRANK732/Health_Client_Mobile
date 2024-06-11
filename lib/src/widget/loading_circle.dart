@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -19,13 +21,13 @@ class CustomLoadingIndicator extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SpinKitFadingCircle(
-                color: Colors.white,
+                color: Colors.black,
                 size: 50.0,
               ),
               SizedBox(height: 20),
               Text(
                 message,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(color: Colors.black, fontSize: 18),
               ),
             ],
           ),

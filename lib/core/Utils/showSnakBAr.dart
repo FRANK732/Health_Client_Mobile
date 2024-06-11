@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ShowToast {
-  static void showToast(String content, Color? textColor) {
+  static void showToast(String content, Color? backColor) {
     Fluttertoast.showToast(
         msg: content,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.red[200],
-        textColor: textColor ?? Colors.black);
+        backgroundColor: backColor ?? Colors.red[200],
+        textColor: Colors.black);
   }
 }
 

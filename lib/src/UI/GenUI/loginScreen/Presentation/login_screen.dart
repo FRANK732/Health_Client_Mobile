@@ -15,6 +15,7 @@ import 'package:health_moble_client/src/widget/custom_Image_View.dart';
 import 'package:health_moble_client/src/widget/custom_elevated_button.dart';
 import 'package:health_moble_client/src/widget/custom_textButton.dart';
 import 'package:health_moble_client/src/widget/custom_text_field.dart';
+import 'package:health_moble_client/src/widget/loading_circle.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -55,48 +56,57 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: BlocListener<LoginBloc, LoginState>(
-              listener: (context, state) {
-                if (state is LoginError) {
-                  ShowToast.showToast("Login Failed", TColors.red700);
-                } else if (state is LoginSucces) {
-                  ShowToast.showToast("Login Succes", TColors.green800);
-                }
-              },
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(TSizes.md.w),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CustomImageView(
-                              imagePath: TImages.loginImg,
-                              width: TSizes.imageWidth,
-                              height: TSizes.imageHeight,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(
-                              height: TSizes.md.h,
-                              width: TSizes.md.w,
-                            ),
-                            Text("Enter your login Detatils"),
-
-                            // SizedBox(height: TSizes.md.h),
-                          ],
+          body: BlocListener<LoginBloc, LoginState>(listener: (context, state) {
+        if (state is LoginError) {
+          ShowToast.showToast("Login Failed", TColors.red700);
+        } else if (state is LoginSucces) {
+          ShowToast.showToast("Login Succes", TColors.green800);
+        }
+      }, child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          if (state is LoginLoading) {
+            CustomLoadingIndicator();
+          }
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(TSizes.md.w),
+              child: Column(
+                children: [
+                  Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CustomImageView(
+                          imagePath: TImages.loginImg,
+                          width: TSizes.imageWidth,
+                          height: TSizes.imageHeight,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                      Form(key: _formKey, child: _buildLoginForm(context)),
-                      SizedBox(height: TSizes.md.h),
-                      CustomElevatedButton(text: "login", onPressed: _login),
-                      SizedBox(height: TSizes.md.h),
-                      _footer(context),
-                    ],
+                        SizedBox(
+                          height: TSizes.md.h,
+                          width: TSizes.md.w,
+                        ),
+                        Text("Enter your login Detatils"),
+
+                        // SizedBox(height: TSizes.md.h),
+                      ],
+                    ),
                   ),
-                ),
-              ))),
+                  Form(key: _formKey, child: _buildLoginForm(context)),
+                  SizedBox(height: TSizes.md.h),
+                  CustomElevatedButton(
+                      text: "login",
+                      onPressed: () {
+                        Get.toNamed("/patientdashboard");
+                      }),
+                  SizedBox(height: TSizes.md.h),
+                  _footer(context),
+                ],
+              ),
+            ),
+          );
+        },
+      ))),
     );
   }
 
