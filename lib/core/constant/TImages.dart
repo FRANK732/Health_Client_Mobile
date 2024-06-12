@@ -12,4 +12,7 @@ class TImages {
 
   //Verify
   static String verify = "$imgBase/verify_1.gif";
+
+  //Dummy profile
+  static String profile = "$imgBase/profile.jpg";
 }

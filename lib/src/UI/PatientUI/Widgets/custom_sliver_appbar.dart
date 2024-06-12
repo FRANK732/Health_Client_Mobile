@@ -1,9 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:health_moble_client/core/constant/TSizes.dart';
+import 'package:health_moble_client/src/UI/PatientUI/Widgets/appointment_card.dart';
+import 'package:intl/intl.dart';
 
 class TSilvarAppBar extends StatefulWidget {
   const TSilvarAppBar({super.key});
@@ -14,77 +17,98 @@ class TSilvarAppBar extends StatefulWidget {
 
 class _TSilvarAppBarState extends State<TSilvarAppBar> {
   final globalKey = GlobalKey();
-
+  String dateNow = DateFormat('y-m-d').format(DateTime.now());
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          expandedHeight: 200.0,
-          floating: false,
-          pinned: true,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text('SliverAppBar Example'),
-            background: SingleChildScrollView(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Your Card Content',
-                        style: TextStyle(fontSize: 18),
-                      ),
+    return GestureDetector(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: Get.height.w * 0.35,
+            floating: true,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(FontAwesomeIcons.tty),
+                        SizedBox(
+                          width: TSizes.ms,
+                        ),
+                        Column(
+                          children: [
+                            Text("Today's Appointments",
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.black)),
+                            Text(
+                              dateNow,
+                            )
+                          ],
+                        ),
+                      ],
                     ),
-                    elevation: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: AppointmentCard(),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.favorite),
+                onPressed: () {
+                  // Add your onPressed code here!
+                },
+              ),
+            ],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
                 ),
+                onChanged: (value) {
+                  // Add your search logic here!
+                },
               ),
             ),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.favorite),
-              onPressed: () {
-                // Add your onPressed code here!
-              },
-            ),
-          ],
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                ),
-              ),
-              onChanged: (value) {
-                // Add your search logic here!
-              },
-            ),
-          ),
-        ),
-        SliverList(
+          SliverList(
             delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            return Container(
-              color: index.isOdd ? Colors.white : Colors.black12,
-              height: 100.0,
-              child: Center(
-                child: Text('$index',
-                    key: index == 2 ? globalKey : null, textScaleFactor: 5),
-              ),
-            );
-          },
-          childCount: 20,
-        )),
-      ],
+              (BuildContext context, int index) {
+                return Container(
+                  color: index.isOdd ? Colors.white : Colors.black12,
+                  height: 100.0,
+                  child: Center(
+                    child: Text('$index',
+                        key: index == 2 ? globalKey : null, textScaleFactor: 5),
+                  ),
+                );
+              },
+              childCount: 20,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
