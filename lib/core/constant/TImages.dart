@@ -15,4 +15,10 @@ class TImages {
 
   //Dummy profile
   static String profile = "$imgBase/profile.jpg";
+
+  //Dr Female
+  static String drFemale = "$imgBase/DrF.png";
+
+  //Dr Male
+  static String drMale = "$imgBase/DrM.png";
 }
