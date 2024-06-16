@@ -54,7 +54,9 @@ class AppointmentCard extends StatelessWidget {
                     // ),
                     Text(
                       "General Practitioner with over 10 years of experience in family medicine and healthcare ",
-                      style: TextStyle(fontWeight: FontWeight.w100),
+                      style: TextStyle(
+                          fontFamily: "League Spartan",
+                          fontWeight: FontWeight.w100),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

@@ -30,7 +30,7 @@ class _TSilvarAppBarState extends State<TSilvarAppBar> {
   @override
   void initState() {
     super.initState();
-    _expandedHeight = Get.height.w * 0.35.h;
+    _expandedHeight = Get.height.w * 0.35;
     _controller.addListener(_scrollListener);
   }
 
@@ -62,14 +62,17 @@ class _TSilvarAppBarState extends State<TSilvarAppBar> {
                       Scaffold.of(context).openDrawer();
                     },
                   )),
-          expandedHeight: _expandedHeight,
+          expandedHeight:
+              Get.height < 400 ? _expandedHeight + 50 : _expandedHeight,
           floating: true,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spacer(),
+                SizedBox(
+                  height: TSizes.xl2,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -108,14 +111,17 @@ class _TSilvarAppBarState extends State<TSilvarAppBar> {
                 fit: BoxFit.contain,
                 child: Row(
                   children: [
-                    CircleIcon(icon: Icon(Icons.notifications_none)),
+                    CircleIcon(
+                      icon: Icons.notifications_none,
+                      iconSize: 20.sp,
+                    ),
                     SizedBox(
                       width: TSizes.ms,
                     ),
                     CircleIcon(
-                        icon: Icon(
-                      Icons.settings,
-                    ))
+                      icon: Icons.settings,
+                      iconSize: 20.sp,
+                    )
                   ],
                 ),
               ),

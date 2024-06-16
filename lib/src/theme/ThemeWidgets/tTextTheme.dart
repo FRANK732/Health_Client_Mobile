@@ -8,126 +8,126 @@ class TTextTheme {
   TTextTheme._();
 
   static TextTheme lightTextTheme = TextTheme(
-    bodyLarge: TextStyle().copyWith(
+    bodyLarge: TextStyle(
       color: Color(0XFF000E8D),
-      fontSize: 16..sp,
+      fontSize: 16.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    bodyMedium: TextStyle().copyWith(
+    bodyMedium: TextStyle(
       color: TColors.black900,
-      fontSize: 15..sp,
+      fontSize: 15.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    bodySmall: TextStyle().copyWith(
+    bodySmall: TextStyle(
       color: TColors.transparent,
-      fontSize: 10..sp,
+      fontSize: 10.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    displayMedium: TextStyle().copyWith(
+    displayMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 40..sp,
+      fontSize: 40.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w700,
     ),
-    headlineLarge: TextStyle().copyWith(
+    headlineLarge: TextStyle(
       color: TColors.black900,
-      fontSize: 32..sp,
+      fontSize: 32.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    headlineSmall: TextStyle().copyWith(
+    headlineSmall: TextStyle(
       color: TColors.white700,
-      fontSize: 24..sp,
+      fontSize: 24.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    labelMedium: TextStyle().copyWith(
+    labelMedium: TextStyle(
       color: TColors.blue700,
-      fontSize: 10..sp,
+      fontSize: 10.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w600,
     ),
-    titleLarge: TextStyle().copyWith(
+    titleLarge: TextStyle(
       color: TColors.blue700,
-      fontSize: 20..sp,
+      fontSize: 20.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w500,
     ),
-    titleMedium: TextStyle().copyWith(
+    titleMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 18..sp,
+      fontSize: 18.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w800,
     ),
-    titleSmall: TextStyle().copyWith(
+    titleSmall: TextStyle(
       color: TColors.blue700,
-      fontSize: 14..sp,
+      fontSize: 14.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w600,
     ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
-    bodyLarge: TextStyle().copyWith(
+    bodyLarge: TextStyle(
       color: TColors.white700,
-      fontSize: 16..sp,
+      fontSize: 16.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    bodyMedium: TextStyle().copyWith(
+    bodyMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 15..sp,
+      fontSize: 15.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    bodySmall: TextStyle().copyWith(
+    bodySmall: TextStyle(
       color: TColors.white700,
-      fontSize: 10..sp,
+      fontSize: 10.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    displayMedium: TextStyle().copyWith(
+    displayMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 40..sp,
+      fontSize: 40.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w700,
     ),
-    headlineLarge: TextStyle().copyWith(
+    headlineLarge: TextStyle(
       color: TColors.white700,
-      fontSize: 32..sp,
+      fontSize: 32.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    headlineSmall: TextStyle().copyWith(
+    headlineSmall: TextStyle(
       color: TColors.white700,
-      fontSize: 24..sp,
+      fontSize: 24.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w400,
     ),
-    labelMedium: TextStyle().copyWith(
+    labelMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 10..sp,
+      fontSize: 10.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w600,
     ),
-    titleLarge: TextStyle().copyWith(
+    titleLarge: TextStyle(
       color: TColors.white700,
-      fontSize: 20..sp,
+      fontSize: 20.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w500,
     ),
-    titleMedium: TextStyle().copyWith(
+    titleMedium: TextStyle(
       color: TColors.white700,
-      fontSize: 18..sp,
+      fontSize: 18.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w800,
     ),
-    titleSmall: TextStyle().copyWith(
+    titleSmall: TextStyle(
       color: TColors.white700,
-      fontSize: 14..sp,
+      fontSize: 14.sp,
       fontFamily: 'Jost',
       fontWeight: FontWeight.w600,
     ),
