@@ -6,6 +6,9 @@ import 'package:health_moble_client/src/UI/GenUI/ConfirmEmailScreen/Presentation
 import 'package:health_moble_client/src/UI/GenUI/ForgetPasswordScreen/Presentation/forget_password.dart';
 import 'package:health_moble_client/src/UI/GenUI/RegistrationScreen/Presentation/registration_screen.dart';
 import 'package:health_moble_client/src/UI/GenUI/loginScreen/Presentation/login_screen.dart';
+import 'package:health_moble_client/src/UI/PatientUI/MainScreen/Presentation/patient_main_screen.dart';
+import 'package:health_moble_client/src/UI/PatientUI/PatientProfileInfo/Presentation/patient_profile_info.dart';
+import 'package:health_moble_client/src/UI/PatientUI/PatientProfileScreen/Presentation/patient_profile_screen.dart';
 
 class AppRoutes {
   static final List<GetPage<dynamic>> routes = [
@@ -25,5 +28,17 @@ class AppRoutes {
         name: "/forgot_password_screen",
         page: () => ForgetPassword(),
         transition: Transition.rightToLeft),
+    GetPage(
+        name: "/patientdashboard",
+        page: () => PatientDashBoard(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: "/patient_profile_screen",
+        page: () => PatientProfileScreen(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: "/patient_profile_info_screen",
+        page: () => PatientProfileInfoScreen(),
+        transition: Transition.rightToLeftWithFade),
   ];
 }

@@ -1,13 +1,9 @@
-// ignore_for_file: must_be_immutable, prefer_const_constructors
-
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomImageView extends StatelessWidget {
-  /// [imagePath] is required parameter for showing image
   final String? imagePath;
   final double? height;
   final double? width;
@@ -19,10 +15,10 @@ class CustomImageView extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final BorderRadius? radius;
   final BoxBorder? border;
+  final Decoration? decoration;
+  final Color? boxColor;
 
-  /// A [CustomImageView] can be used for showing any type of images.
-  /// It will show the placeholder image if image is not found on network image.
-  const CustomImageView({
+   CustomImageView({
     Key? key,
     this.imagePath,
     this.height,
@@ -34,7 +30,9 @@ class CustomImageView extends StatelessWidget {
     this.radius,
     this.margin,
     this.border,
+    this.decoration,
     this.placeHolder = 'assets/images/image_not_found.png',
+    this.boxColor,
   }) : super(key: key);
 
   @override
@@ -52,34 +50,24 @@ class CustomImageView extends StatelessWidget {
       padding: margin ?? EdgeInsets.zero,
       child: InkWell(
         onTap: onTap,
-        child: _buildCircleImage(),
+        child: _buildImageWithDecoration(),
       ),
     );
   }
 
-  Widget _buildCircleImage() {
-    if (radius != null) {
-      return ClipRRect(
+  Widget _buildImageWithDecoration() {
+    return Container(
+      decoration: decoration ??
+          BoxDecoration(
+            color: boxColor,
+            border: border,
+            borderRadius: radius,
+          ),
+      child: ClipRRect(
         borderRadius: radius ?? BorderRadius.zero,
-        child: _buildImageWithBorder(),
-      );
-    } else {
-      return _buildImageWithBorder();
-    }
-  }
-
-  Widget _buildImageWithBorder() {
-    if (border != null) {
-      return Container(
-        decoration: BoxDecoration(
-          border: border,
-          borderRadius: radius,
-        ),
         child: _buildImageView(),
-      );
-    } else {
-      return _buildImageView();
-    }
+      ),
+    );
   }
 
   Widget _buildImageView() {
