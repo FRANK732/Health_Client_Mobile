@@ -9,6 +9,7 @@ class TSizes {
   static double lg = 26.0;
   static double xl = 34.0;
   static double xl2 = 38.0;
+  static double xl3 = 70.0;
   static double xsl3 = 100.0;
 
   //Font Size

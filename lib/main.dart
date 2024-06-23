@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:health_moble_client/core/constant/app_rioute.dart';
+import 'package:health_moble_client/core/constant/app_route.dart';
 import 'package:health_moble_client/core/services/get_service_injection.dart';
 import 'package:health_moble_client/src/UI/GenUI/loginScreen/Presentation/bloc/bloc_bloc.dart';
 import 'package:health_moble_client/src/UI/GenUI/loginScreen/Presentation/login_screen.dart';

@@ -29,8 +29,9 @@ class _DoctorCardState extends State<DoctorCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey[350],
+    return Container(
+      decoration: TBoxDecoration.doctorOutline
+          .copyWith(borderRadius: TBorderRadiusStyle.roundedBorder10),
       child: Padding(
         padding: EdgeInsets.all(TSizes.ms.w),
         child: Row(
@@ -60,18 +61,18 @@ class _DoctorCardState extends State<DoctorCard> {
                   ),
                   Text(
                     "Dermato-Endocrinology",
-                    style: TextStyle(fontWeight: FontWeight.w100),
+                    style: TextStyle(
+                        fontFamily: "League Spartan",
+                        fontWeight: FontWeight.w100),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Row(
                     children: [
                       CircleIcon(
-                        icon: Icon(
-                          FontAwesomeIcons.venus,
-                          color: Colors.pink[200],
-                          size: 17.sp,
-                        ),
+                        icon: FontAwesomeIcons.venus,
+                        iconColor: Colors.pink[200],
+                        iconSize: 12.sp,
                       ),
                       SizedBox(
                         width: TSizes.ms,
