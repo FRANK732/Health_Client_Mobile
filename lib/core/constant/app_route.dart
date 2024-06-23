@@ -39,6 +39,6 @@ class AppRoutes {
     GetPage(
         name: "/patient_profile_info_screen",
         page: () => PatientProfileInfoScreen(),
-        transition: Transition.leftToRight),
+        transition: Transition.rightToLeftWithFade),
   ];
 }
